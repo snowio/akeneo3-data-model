@@ -12,7 +12,7 @@ from the Akeneo 3 connector.
 ### Prerequisites
 
 This data model should be used within the snow io project mappings. The events **MUST** be coming
-from an akeneo 2 application.
+from an akeneo 3 application.
 
 ### Installing
 
