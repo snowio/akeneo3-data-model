@@ -27,8 +27,14 @@ class ProductProperties
         $properties->enabled = (bool)$json['enabled'];
         $properties->family = $json['family'];
         $properties->groups = $json['groups'];
+        $properties->categoryLabels = LabeledCategoryPathSet::fromJson($json['localizations']);
         $properties->categories = CategoryPathSet::fromJson($json['categories']);
         return $properties;
+    }
+
+    public function getCategoryLabels(string $locale): ?LabeledCategoryPath
+    {
+        return $this->categoryLabels->fromLocale($locale) ?? null;
     }
 
     public function getSku(): string
@@ -67,6 +73,8 @@ class ProductProperties
     private $enabled;
     private $family;
     private $categories;
+    /** @var LabeledCategoryPathSet */
+    private $categoryLabels;
 
     private function __construct()
     {
