@@ -10,8 +10,14 @@ class ProductModelProperties
         $properties->code = $json['code'];
         $properties->familyVariant = FamilyVariantData::fromJson($json['family_variant']);
         $properties->categories = CategoryPathSet::fromJson($json['categories']);
+        $properties->categoryLabels = LabeledCategoryPathSet::fromJson($json['localizations']);
         $properties->parent = $json['parent'];
         return $properties;
+    }
+
+    public function getCategoryLabels(string $locale): ?LabeledCategoryPath
+    {
+        return $this->categoryLabels->fromLocale($locale);
     }
 
     public function getCategories(): CategoryPathSet
@@ -51,6 +57,8 @@ class ProductModelProperties
     private $labels;
     private $categories;
     private $parent;
+    /** @var LabeledCategoryPathSet */
+    private $categoryLabels;
 
     private function __construct()
     {
