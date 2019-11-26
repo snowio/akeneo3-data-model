@@ -9,7 +9,7 @@ class ProductModelData extends ItemData
         /** @var static $productModel */
         $productModel = parent::fromJson($json);
         $productModel->properties = ProductModelProperties::fromJson($json);
-        $productModel->associations = AssociationSet::fromJson($json['associations']);
+        $productModel->associations = AssociationSet::fromJson($json['associations'] ?? []);
         return $productModel;
     }
 
