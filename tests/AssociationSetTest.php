@@ -50,5 +50,4 @@ class AssociationSetTest extends TestCase
             ]
         ];
     }
-
 }
