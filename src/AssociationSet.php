@@ -5,6 +5,11 @@ namespace SnowIO\Akeneo3DataModel;
 
 final class AssociationSet implements \IteratorAggregate
 {
+    public static function create(): AssociationSet
+    {
+        return new self([]);
+    }
+
     public static function fromJson(array $json): AssociationSet
     {
         $items = [];
