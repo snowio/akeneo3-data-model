@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use SnowIO\Akeneo3DataModel\AssociationSet;
 use SnowIO\Akeneo3DataModel\PriceCollection;
 use SnowIO\Akeneo3DataModel\ProductModelData;
 use SnowIO\Akeneo3DataModel\ProductModelProperties;
@@ -19,6 +20,7 @@ class ProductModelDataTest extends TestCase
         self::assertEquals('test-channel', $productModelData->getChannel());
         self::assertEquals(self::getExpectedAttributeValuesJson(), $productModelData->getAttributeValues()->getValues(Scope::ofChannel('test-channel')));
         self::assertEquals(self::getLocalizedValuesJson(), $attributeValues->getValues(Scope::ofChannel('test-channel')->withLocale('en_GB')));
+        self::assertTrue(AssociationSet::fromJson(self::getAssociationsJson())->equals($productModelData->getAssociations()));
     }
 
     public static function getProductModelJson()
@@ -35,7 +37,25 @@ class ProductModelDataTest extends TestCase
                     "attribute_values" => self::getLocalizedValuesJson()
                 ]
             ],
+            "associations" => self::getAssociationsJson(),
             "@timestamp" => 0
+        ];
+    }
+
+    private static function getAssociationsJson()
+    {
+        return [
+            "style_with" => [
+                "groups" => [
+                    ""
+                ],
+                "products" => [
+                    ""
+                ],
+                "product_models" => [
+                    "A120002-BLUE"
+                ]
+            ],
         ];
     }
 

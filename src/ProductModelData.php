@@ -9,6 +9,7 @@ class ProductModelData extends ItemData
         /** @var static $productModel */
         $productModel = parent::fromJson($json);
         $productModel->properties = ProductModelProperties::fromJson($json);
+        $productModel->associations = AssociationSet::fromJson($json['associations'] ?? []);
         return $productModel;
     }
 
@@ -22,6 +23,11 @@ class ProductModelData extends ItemData
         return $this->properties;
     }
 
+    public function getAssociations(): AssociationSet
+    {
+        return $this->associations;
+    }
+
     public function equals(): bool
     {
 
@@ -30,4 +36,6 @@ class ProductModelData extends ItemData
 
     /** @var ProductModelProperties */
     private $properties;
+    /** @var AssociationSet */
+    private $associations;
 }
