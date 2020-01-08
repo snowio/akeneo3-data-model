@@ -12,6 +12,7 @@ class AssociationDataTest extends TestCase
         self::assertEquals(["A", "B", "C"], $associations->groups());
         self::assertEquals(["D", "E", "F"], $associations->products());
         self::assertEquals(["A120002-BLUE"], $associations->productModels());
+        self::assertEquals("style_with", $associations->code());
     }
 
     public function getAssociationDataJson()

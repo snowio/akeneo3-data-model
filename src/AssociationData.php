@@ -11,6 +11,8 @@ final class AssociationData
         if (!$code) {
             throw new Akeneo3DataException('Invalid association: no association code provided');
         }
+
+        $association->code = $code;
         $association->groups = $json[$code]["groups"];
         $association->products = $json[$code]["products"];
         $association->productModels = $json[$code]["product_models"];
