@@ -37,6 +37,11 @@ class AttributeOption
         return $this->labels->getValue($locale);
     }
 
+    public function getSortOrder(): ?string
+    {
+        return $this->sortOrder;
+    }
+
     public function withLabels(InternationalizedString $labels): self
     {
         $result = clone $this;
@@ -51,17 +56,29 @@ class AttributeOption
         return $result;
     }
 
+    public function withSortOrder(?string $sortOrder): self
+    {
+        $result = clone $this;
+        $result->sortOrder = $sortOrder;
+        return $result;
+    }
+
     public static function fromJson(array $json): self
     {
         $identifier = AttributeOptionIdentifier::of($json['attribute'], (string)$json['code']);
         $labels = InternationalizedString::fromJson($json['labels']);
-        return self::of($identifier)->withLabels($labels);
+        $sortOrder = $json['sort_order'] ?? null;
+        return self::of($identifier)
+            ->withLabels($labels)
+            ->withSortOrder($sortOrder);
     }
 
     /** @var AttributeOptionIdentifier */
     private $identifier;
     /** @var InternationalizedString */
     private $labels;
+    /** @var string */
+    private $sortOrder;
 
     private function __construct()
     {
