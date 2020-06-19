@@ -56,7 +56,7 @@ class AttributeOption
         return $result;
     }
 
-    public function withSortOrder(string $sortOrder): self
+    public function withSortOrder(?string $sortOrder): self
     {
         $result = clone $this;
         $result->sortOrder = $sortOrder;
@@ -67,7 +67,7 @@ class AttributeOption
     {
         $identifier = AttributeOptionIdentifier::of($json['attribute'], (string)$json['code']);
         $labels = InternationalizedString::fromJson($json['labels']);
-        $sortOrder = $json['sort_order'];
+        $sortOrder = $json['sort_order'] ?? null;
         return self::of($identifier)
             ->withLabels($labels)
             ->withSortOrder($sortOrder);
