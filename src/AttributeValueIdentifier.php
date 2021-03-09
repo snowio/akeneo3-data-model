@@ -33,7 +33,7 @@ class AttributeValueIdentifier
 
     private function __construct(string $attributeCode, Scope $scope)
     {
-        $this->attributeCode = $attributeCode;
+        $this->attributeCode = strtolower($attributeCode);
         $this->scope = $scope;
     }
 }

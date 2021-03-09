@@ -2,6 +2,8 @@
 
 use PHPUnit\Framework\TestCase;
 use SnowIO\Akeneo3DataModel\ProductData;
+use SnowIO\Akeneo3DataModel\AttributeValueIdentifier;
+use SnowIO\Akeneo3DataModel\Scope;
 
 class ProductDataTest extends TestCase
 {
@@ -13,6 +15,11 @@ class ProductDataTest extends TestCase
         self::assertEquals("foo", $productData->getSku());
         self::assertEquals(0, count(iterator_to_array($productData->getAttributeOptions()->getIterator())));
         self::assertNotNull($productData->getAttributeValues());
+
+        self::assertEquals(
+            "Red",
+            $productData->getAttributeValues()->getValue(AttributeValueIdentifier::of("colour", Scope::ofChannel("test")))
+        );
     }
 
     public static function getProductData()
@@ -28,6 +35,7 @@ class ProductDataTest extends TestCase
             "attribute_values" => [
                 "code" => "koppel_vase",
                 "brand" => null,
+                "Colour" => "Red",
                 "buying_member" => null,
                 "colour_group" => [],
                 "direct_delivery" => "0",
