@@ -13,7 +13,7 @@ class AttributeOptionTest extends TestCase
         $attributeOption = AttributeOption::fromJson(
             [
                 "code" => "size-110",
-                "attribute" => "size",
+                "attribute" => "Size",
                 "sort_order" => "67",
                 "labels" => $labels
             ]

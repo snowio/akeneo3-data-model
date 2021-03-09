@@ -29,7 +29,7 @@ class AttributeOptionIdentifier
 
     private function __construct(string $attributeCode, string $optionCode)
     {
-        $this->attributeCode = $attributeCode;
+        $this->attributeCode = strtolower($attributeCode);
         $this->optionCode = $optionCode;
     }
 }

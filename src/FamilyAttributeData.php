@@ -27,7 +27,7 @@ class FamilyAttributeData
     public static function fromJson(array $json): self
     {
         $familyAttributeData = new self;
-        $familyAttributeData->code = $json['code'];
+        $familyAttributeData->code = strtolower($json['code']);
         $familyAttributeData->isRequired = $json['is_required'];
         $familyAttributeData->group = $json['group'];
         $familyAttributeData->sortOrder = $json['sort_order'];

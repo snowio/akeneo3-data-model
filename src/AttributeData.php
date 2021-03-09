@@ -47,7 +47,7 @@ class AttributeData
     public static function fromJson(array $json): self
     {
         $attribute = new self();
-        $attribute->code = $json['code'];
+        $attribute->code = strtolower($json['code']);
         $attribute->type = $json['type'];
         $attribute->localizable = (bool)$json['localizable'];
         $attribute->scopable = (bool)$json['scopable'];
