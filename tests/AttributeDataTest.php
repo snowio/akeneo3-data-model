@@ -19,6 +19,7 @@ class AttributeDataTest extends TestCase
                 "sort_order" => "10",
                 "labels" => $labels,
                 "group" => "default",
+                "decimals_allowed" => 1,
             ]
         );
 
@@ -26,6 +27,7 @@ class AttributeDataTest extends TestCase
         self::assertEquals("pim_catalog_identifier", $attribute->getType());
         self::assertTrue($attribute->getLabels()->equals(InternationalizedString::fromJson($labels)));
         self::assertEquals("10", $attribute->getSortOrder());
+        self::assertTrue($attribute->isDecimalsAllowed());
     }
 
 }

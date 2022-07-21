@@ -43,6 +43,10 @@ class AttributeData
     {
         return $this->group;
     }
+    public function isDecimalsAllowed(): bool
+    {
+        return $this->decimalsAllowed;
+    }
 
     public static function fromJson(array $json): self
     {
@@ -54,6 +58,7 @@ class AttributeData
         $attribute->sortOrder = (int)$json['sort_order'];
         $attribute->labels = InternationalizedString::fromJson($json['labels']);
         $attribute->group = $json['group'];
+        $attribute->decimalsAllowed = (bool)($json['decimals_allowed'] ?? false);
         return $attribute;
     }
 
@@ -65,6 +70,7 @@ class AttributeData
     private $scopable;
     private $sortOrder;
     private $group;
+    private $decimalsAllowed;
 
     private function __construct()
     {
