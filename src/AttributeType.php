@@ -14,6 +14,7 @@ abstract class AttributeType
     const TEXTAREA = 'pim_catalog_textarea';
     const MULTISELECT = 'pim_catalog_multiselect';
     const ASSETS_COLLECTION = 'pim_assets_collection';
+    const METRIC = 'pim_catalog_metric';
 
     const ALL = [
         self::IDENTIFIER,
@@ -25,7 +26,8 @@ abstract class AttributeType
         self::TEXT,
         self::TEXTAREA,
         self::MULTISELECT,
-        self::ASSETS_COLLECTION
+        self::ASSETS_COLLECTION,
+        self::METRIC
     ];
     
     private function __construct()
